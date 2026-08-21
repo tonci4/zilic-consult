@@ -1,4 +1,4 @@
-import { readdir, readFile, stat } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { dirname, join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { pages, site } from "../seo/content.mjs";
@@ -151,26 +151,21 @@ for (const [path, count] of incoming) {
   if (path !== "/" && count === 0) fail("internal links", `${path} has no crawlable incoming link`);
 }
 
-const sitemapFiles = allFiles.filter((path) => /sitemap-(core|services|audiences|industries|trust-legal)\.xml$/.test(path));
-const sitemapUrls = [];
-for (const file of sitemapFiles) {
-  const xml = await readFile(file, "utf8");
-  sitemapUrls.push(...all(xml, /<loc>([^<]+)<\/loc>/g));
+const sitemapFiles = allFiles.filter((path) => /\/sitemap(?:-[^/]+)?\.xml$/.test(path));
+if (sitemapFiles.length !== 1) fail("sitemaps", `expected one flat sitemap, found ${sitemapFiles.length}`);
+const sitemapXml = await readFile(join(output, "sitemap.xml"), "utf8");
+if (!/<urlset\b/.test(sitemapXml) || /<sitemapindex\b/.test(sitemapXml)) {
+  fail("sitemap.xml", "must be a flat urlset, not a sitemap index");
 }
+const sitemapUrls = all(sitemapXml, /<loc>([^<]+)<\/loc>/g);
 const sitemapSet = new Set(sitemapUrls);
 if (sitemapUrls.length !== sitemapSet.size) fail("sitemaps", "duplicate sitemap URL");
 const expectedUrls = new Set([...expectedPaths].map((path) => new URL(path, site.origin).href));
 for (const url of expectedUrls) if (!sitemapSet.has(url)) fail("sitemaps", `missing ${url}`);
 for (const url of sitemapSet) if (!expectedUrls.has(url)) fail("sitemaps", `unexpected ${url}`);
 
-const sitemapIndex = await readFile(join(output, "sitemap.xml"), "utf8");
-for (const file of sitemapFiles) {
-  const url = new URL(`/${relative(output, file).split(sep).join("/")}`, site.origin).href;
-  if (!sitemapIndex.includes(`<loc>${url}</loc>`)) fail("sitemap.xml", `missing child sitemap ${url}`);
-}
-
 const robots = await readFile(join(output, "robots.txt"), "utf8");
-if (!robots.includes(`Sitemap: ${site.origin}/sitemap.xml`)) fail("robots.txt", "missing canonical sitemap index URL");
+if (!robots.includes(`Sitemap: ${site.origin}/sitemap.xml`)) fail("robots.txt", "missing canonical flat sitemap URL");
 if (!robots.includes("Disallow: /api/")) fail("robots.txt", "internal API route is not blocked");
 
 const manifest = JSON.parse(await readFile(join(output, "seo-build.json"), "utf8"));
@@ -187,4 +182,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`SEO validation passed: ${htmlFiles.length} HTML pages, ${sitemapUrls.length} sitemap URLs, ${sitemapFiles.length + 1} sitemap files, 0 errors.`);
+console.log(`SEO validation passed: ${htmlFiles.length} HTML pages, ${sitemapUrls.length} sitemap URLs, 1 flat sitemap, 0 errors.`);

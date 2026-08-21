@@ -112,12 +112,7 @@ Future language records must include a localized path, complete visitor-facing c
 The build emits:
 
 - `/robots.txt`
-- `/sitemap.xml` (sitemap index for Search Console)
-- `/sitemap-core.xml`
-- `/sitemap-services.xml`
-- `/sitemap-audiences.xml`
-- `/sitemap-industries.xml`
-- `/sitemap-trust-legal.xml`
+- `/sitemap.xml` (one flat sitemap containing every canonical page)
 - `/llms.txt`
 
 `lastmod` changes only with a material content change. `llms.txt` is a citation and discovery aid, not a ranking claim.

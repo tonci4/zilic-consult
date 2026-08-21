@@ -56,31 +56,8 @@ for (const page of pages) {
 }
 
 const home = { path: "/", lastModified: site.lastModified };
-const sitemapGroups = {
-  "sitemap-core.xml": [
-    home,
-    ...pages.filter((page) => page.family === "hub" || page.path === "/about/" || page.path === "/how-i-work/"),
-  ],
-  "sitemap-services.xml": pages.filter((page) => page.family === "service"),
-  "sitemap-audiences.xml": pages.filter((page) => page.family === "audience"),
-  "sitemap-industries.xml": pages.filter((page) => page.family === "industry"),
-  "sitemap-trust-legal.xml": pages.filter((page) => page.family === "trust" || page.family === "legal"),
-};
-
-for (const [filename, sitemapPages] of Object.entries(sitemapGroups)) {
-  await writeOutput(filename, sitemap(sitemapPages));
-}
-
-const sitemapIndexEntries = Object.keys(sitemapGroups).map((filename) => `  <sitemap>
-    <loc>${xmlEscape(urlFor(`/${filename}`))}</loc>
-    <lastmod>${site.lastModified}</lastmod>
-  </sitemap>`).join("\n");
-
-await writeOutput("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapIndexEntries}
-</sitemapindex>
-`);
+const sitemapPages = [home, ...pages];
+await writeOutput("sitemap.xml", sitemap(sitemapPages));
 
 await writeOutput("robots.txt", `User-agent: *
 Allow: /
@@ -123,8 +100,8 @@ await writeOutput("seo-build.json", `${JSON.stringify({
   language: site.language,
   generatedAt: new Date().toISOString(),
   htmlPages: pages.length + 1,
-  sitemapUrls: Object.values(sitemapGroups).reduce((total, group) => total + group.length, 0),
-  sitemapFiles: Object.keys(sitemapGroups).length + 1,
+  sitemapUrls: sitemapPages.length,
+  sitemapFiles: 1,
   families: {
     home: 1,
     hubs: pages.filter((page) => page.family === "hub").length,
@@ -137,4 +114,4 @@ await writeOutput("seo-build.json", `${JSON.stringify({
   },
 }, null, 2)}\n`);
 
-console.log(`Built ${pages.length + 1} HTML pages and ${Object.keys(sitemapGroups).length + 1} sitemap files for ${site.origin}`);
+console.log(`Built ${pages.length + 1} HTML pages and 1 flat sitemap for ${site.origin}`);

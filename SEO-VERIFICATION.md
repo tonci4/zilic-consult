@@ -5,7 +5,7 @@ Verified: 21 August 2026
 ## Production
 
 - Canonical host: `https://www.zilic-consult.com`
-- Production deployment: `dpl_HAtYEx3p8KAnRqvHRu9eaqL3V4Rs`
+- Production deployment: `dpl_E1gAdE3MjundkitvqwrHAhrenexK`
 - Deployment state: `READY`
 - Production alias: `https://www.zilic-consult.com`
 - Apex host: `https://zilic-consult.com/` resolves to the `www` canonical host
@@ -14,8 +14,7 @@ Verified: 21 August 2026
 
 - HTML pages: 25
 - Sitemap URLs: 25
-- Sitemap index files: 1
-- Child sitemap files: 5
+- Flat sitemap files: 1
 - Services: 8
 - Audience pages: 4
 - Industry pages: 3
@@ -44,11 +43,11 @@ Verified: 21 August 2026
 
 ## Live verification
 
-- Fetched every URL listed across all five child sitemaps.
+- Fetched every URL listed in the flat sitemap.
 - 25 of 25 URLs returned `200`.
 - 25 of 25 pages returned the expected `https://www.zilic-consult.com` self-canonical.
 - 25 of 25 pages contained exactly one H1 in the live response.
-- `/robots.txt` returned the canonical sitemap index and blocked `/api/` and `/_vercel/`.
+- `/robots.txt` returned the canonical flat sitemap and blocked `/api/` and `/_vercel/`.
 - The automotive industry page was visually and accessibility-tree checked in the production browser.
 
 ## Google Search Console handoff
