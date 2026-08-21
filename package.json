@@ -1,0 +1,14 @@
+{
+  "name": "zilic-consult",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate:seo": "node scripts/validate-seo.mjs",
+    "check": "npm run build && npm run validate:seo"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}
