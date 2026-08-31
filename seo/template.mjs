@@ -237,6 +237,7 @@ export function renderPage(page) {
   <meta name="twitter:title" content="${escapeHtml(page.title)}">
   <meta name="twitter:description" content="${escapeHtml(page.description)}">
   <meta name="twitter:image" content="${absolute(site.image)}">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/ds.css">
   <link rel="stylesheet" href="/assets/site.css">
   <script type="application/ld+json">${schemaFor(page)}</script>
