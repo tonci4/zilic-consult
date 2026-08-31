@@ -13,8 +13,8 @@
 
 | Cluster | Primary intent | Canonical page | Supporting concepts |
 | --- | --- | --- | --- |
-| Consultancy overview | independent product, mobility and growth consultant | `/` | product, market, growth, technology, mobility |
-| Service directory | consulting services | `/services/` | strategy, readiness, entry, pricing, funding, leadership |
+| Consultancy overview | automotive and autonomous mobility consultant | `/` | complex products, product strategy, launch, mobility |
+| Service directory | automotive and mobility consulting services | `/services/` | strategy, readiness, entry, pricing, funding, leadership |
 | Product strategy | product strategy consultant | `/services/product-mobility-strategy/` | roadmaps, requirements, service design, mobility product |
 | Market readiness | market readiness consultant | `/services/market-readiness/` | validation, segmentation, positioning, buying process |
 | Market entry | market entry consultant | `/services/market-entry-launch/` | geographic expansion, launch, partnerships, operations |
@@ -100,7 +100,7 @@ Future language records must include a localized path, complete visitor-facing c
 
 ## 7. Internal-linking rules
 
-1. The homepage links to all three family hubs and every service.
+1. The homepage links to the expertise hub and priority engagements; the global footer links to all three family hubs.
 2. Each hub links to every child with ordinary HTML anchors.
 3. Each detail page links to relevant services, audiences, sectors, methodology and sources.
 4. Breadcrumbs link to home and the parent hub.

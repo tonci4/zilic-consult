@@ -1,7 +1,4 @@
-/* Žilić Consult — page styles.
-   Translated from the Claude Design source `Zilic Consult.dc.html`:
-   inline styles become classes, and the canvas-only `style-hover`
-   attributes become real :hover rules. */
+/* Žilić Consult — shared page styles. */
 
 html { scroll-behavior: smooth; }
 body {
@@ -76,10 +73,6 @@ a:hover { color: var(--color-accent-800); }
   color: color-mix(in srgb, var(--color-text) 80%, transparent);
 }
 .lede + .lede { margin-top: 18px; }
-.note {
-  margin: clamp(32px, 4vw, 44px) 0 0; font-size: 13.5px; line-height: 1.6;
-  max-width: 58ch; color: var(--color-neutral-700);
-}
 .note--caps {
   margin: 20px 0 0; font-size: 12.5px; letter-spacing: 0.04em;
   text-transform: uppercase; color: var(--color-neutral-700);
@@ -104,6 +97,12 @@ a:hover { color: var(--color-accent-800); }
   font-size: clamp(16px, 1.25vw, 19px); line-height: 1.62;
   color: color-mix(in srgb, var(--color-text) 78%, transparent);
 }
+.hero__proof {
+  margin: clamp(24px, 3vw, 34px) 0 0;
+  font-family: var(--font-heading); font-size: 13px; line-height: 1.6;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-700);
+}
+.hero__proof span { margin: 0 0.45em; color: var(--color-accent-700); }
 .actions {
   display: flex; flex-wrap: wrap; align-items: center;
   gap: 28px; margin-top: clamp(36px, 5vw, 56px);
@@ -117,30 +116,6 @@ a:hover { color: var(--color-accent-800); }
 }
 .link-underline:hover { color: var(--color-text); border-bottom-color: var(--color-text); }
 
-/* — services — */
-.services { display: flex; flex-direction: column; }
-.service {
-  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
-  gap: clamp(16px, 4vw, 56px); padding: clamp(24px, 3vw, 36px) 0;
-  border-top: 1px solid var(--color-divider);
-}
-.service:last-child { border-bottom: 1px solid var(--color-divider); }
-.service__head { display: flex; gap: 18px; align-items: baseline; }
-.service__num {
-  font-family: var(--font-heading); font-size: 13px;
-  letter-spacing: 0.1em; color: var(--color-accent-700);
-}
-.service h3 { margin: 0; font-size: clamp(20px, 1.9vw, 27px); line-height: 1.16; }
-.service h3 a {
-  color: inherit; text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 22%, transparent);
-}
-.service h3 a:hover { color: var(--color-accent-800); border-bottom-color: var(--color-accent-700); }
-.service p {
-  margin: 0; font-size: 16px; line-height: 1.62; max-width: 54ch;
-  color: color-mix(in srgb, var(--color-text) 76%, transparent);
-}
-
 /* — rule lists — */
 .rule-list { list-style: none; margin: 0; padding: 0; }
 .rule-list li { border-top: 1px solid var(--color-divider); }
@@ -153,11 +128,45 @@ a:hover { color: var(--color-accent-800); }
   font-family: var(--font-heading); font-size: 17px;
   letter-spacing: 0.01em; padding: 14px 0;
 }
-.rule-list--capabilities {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0 clamp(24px, 4vw, 56px);
+.situation-list li {
+  position: relative; padding: 17px 0 17px 28px;
+  font-family: var(--font-heading); font-size: clamp(17px, 1.4vw, 20px); line-height: 1.4;
 }
-.rule-list--capabilities li { font-size: 16.5px; padding: 15px 0; }
+.situation-list li::before {
+  content: ""; position: absolute; top: 1.55em; left: 0;
+  width: 9px; height: 1px; background: var(--color-accent-700);
+}
+
+/* — example engagements — */
+.engagement-table { border-bottom: 1px solid var(--color-divider); }
+.engagement-row {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.8fr) minmax(0, 1.5fr);
+  gap: clamp(20px, 4vw, 56px); align-items: baseline;
+  padding: clamp(22px, 3vw, 30px) 0; border-top: 1px solid var(--color-divider);
+  color: var(--color-text); text-decoration: none;
+}
+.engagement-row:not(.engagement-row--head):hover { color: var(--color-text); background: var(--color-accent-100); }
+.engagement-row > * { min-width: 0; }
+.engagement-row span { font-size: 15px; line-height: 1.5; color: var(--color-neutral-800); }
+.engagement-row strong { font-family: var(--font-heading); font-size: 17px; line-height: 1.35; }
+.engagement-row--head { padding: 0 0 12px; border-top: 0; }
+.engagement-row--head span {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-neutral-700);
+}
+
+/* — operating proof — */
+.proof-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--color-divider); border-left: 1px solid var(--color-divider);
+}
+.proof-item { padding: clamp(24px, 4vw, 48px); border-right: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider); }
+.proof-item__label {
+  margin: 0 0 clamp(28px, 4vw, 48px); font-size: 11px; line-height: 1.4;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--color-accent-700);
+}
+.proof-item h3 { margin: 0; max-width: 21ch; font-size: clamp(21px, 2.2vw, 31px); line-height: 1.15; }
+.proof-item > p:last-child { margin: 18px 0 0; max-width: 43ch; font-size: 15px; line-height: 1.6; color: var(--color-neutral-800); }
+.proof-note { margin-top: 24px; }
 
 /* — about — */
 .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -179,43 +188,11 @@ a:hover { color: var(--color-accent-800); }
 }
 .about__body p:first-of-type { margin-top: clamp(24px, 3vw, 34px); }
 .about__eyebrow { margin: 0 0 clamp(24px, 3.5vw, 40px); color: var(--color-neutral-700); }
-.tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(26px, 3vw, 34px); }
 .about__link { margin: clamp(26px, 3vw, 34px) 0 0; font-size: 14.5px; }
 .about__link a {
   text-decoration: none; padding-bottom: 2px;
   border-bottom: 1px solid color-mix(in srgb, var(--color-accent-700) 45%, transparent);
 }
-
-/* — experience: role cards — */
-.roles {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: clamp(18px, 2.4vw, 28px); margin-top: clamp(48px, 7vw, 84px);
-}
-.role {
-  padding: clamp(24px, 3vw, 40px);
-  display: grid; gap: clamp(14px, 2vw, 20px); align-content: start;
-}
-.role__head { display: flex; align-items: baseline; gap: 14px; }
-.role__num {
-  font-family: var(--font-heading); font-size: 12px;
-  letter-spacing: 0.12em; color: var(--color-accent-700);
-}
-.role h3 { margin: 0; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.12; }
-.role h3 a {
-  color: inherit; text-decoration: none; padding-bottom: 1px;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 28%, transparent);
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-.role h3 a:hover { color: var(--color-accent-800); border-bottom-color: var(--color-accent-700); }
-.role__role {
-  margin: 0; font-family: var(--font-heading); font-size: 15px;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-neutral-700);
-}
-.role__body {
-  margin: 0; font-size: 16px; line-height: 1.62;
-  color: color-mix(in srgb, var(--color-text) 80%, transparent);
-}
-.role__tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* — contact — */
 .contact { background: var(--color-accent-900); color: var(--color-bg); }
@@ -261,13 +238,6 @@ a:hover { color: var(--color-accent-800); }
   margin: 0 0 8px; font-size: 11px; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--color-neutral-700);
 }
-.footer-detail {
-  margin: 0; font-size: 13.5px; line-height: 1.7;
-  color: color-mix(in srgb, var(--color-text) 70%, transparent);
-}
-.footer-contact { margin: 0 0 6px; font-size: 13.5px; line-height: 1.7; }
-.footer-contact:last-child { margin-bottom: 0; }
-.footer-contact a { text-decoration: none; }
 .footer-sitemap a {
   display: block; width: fit-content; margin: 0 0 7px;
   color: var(--color-accent-700); text-decoration: none; font-size: 13.5px;
@@ -285,11 +255,23 @@ a:hover { color: var(--color-accent-800); }
 
 /* — narrow screens — */
 @media (max-width: 640px) {
-  .service { grid-template-columns: 1fr; }
   .about { grid-template-columns: 1fr; }
   .about__body { grid-column: auto; }
   .about__figure { max-width: 320px; }
   .site-header__inner { flex-wrap: wrap; gap: 12px 24px; }
+  .site-nav { gap: 14px; font-size: 12.5px; }
+  .engagement-row { grid-template-columns: 1fr; gap: 10px; padding: 24px 0; }
+  .engagement-row--head { display: none; }
+  .engagement-row > :nth-child(1)::before,
+  .engagement-row > :nth-child(2)::before,
+  .engagement-row > :nth-child(3)::before {
+    display: block; margin-bottom: 4px; font-family: var(--font-body); font-size: 10px;
+    font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-neutral-700);
+  }
+  .engagement-row > :nth-child(1)::before { content: "Situation"; }
+  .engagement-row > :nth-child(2)::before { content: "Engagement"; }
+  .engagement-row > :nth-child(3)::before { content: "Output"; }
+  .proof-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -327,9 +309,6 @@ a:hover { color: var(--color-accent-800); }
   max-width: 58ch; margin: clamp(28px, 4vw, 42px) 0 0;
   font-size: clamp(18px, 1.6vw, 23px); line-height: 1.55;
   color: color-mix(in srgb, var(--color-text) 82%, transparent);
-}
-.content-freshness {
-  margin: 18px 0 0; font-size: 12px; color: var(--color-neutral-700);
 }
 .page-lede {
   max-width: 68ch; margin: 0 0 20px; font-size: clamp(17px, 1.3vw, 20px);

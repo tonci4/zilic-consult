@@ -68,10 +68,10 @@ Sitemap: ${urlFor("/sitemap.xml")}
 `);
 
 const primaryPages = [
-  ["/", "Independent product, market and growth consulting overview"],
-  ["/services/", "Canonical service directory"],
-  ["/for/", "Canonical audience directory for CEOs, COOs, product leaders and founders"],
-  ["/industries/", "Canonical industry directory"],
+  ["/", "Automotive, autonomous mobility and complex-product consulting overview"],
+  ["/services/", "Focused areas of expertise"],
+  ["/for/", "Support for CEOs, COOs, product leaders and founders"],
+  ["/industries/", "Automotive, autonomous mobility and B2B technology experience"],
   ["/about/", "Professional background and experience limitations"],
   ["/methodology/", "Evidence, assumption and recommendation methodology"],
   ["/sources/", "Source, provenance and freshness policy"],
@@ -79,7 +79,7 @@ const primaryPages = [
 
 await writeOutput("llms.txt", `# Žilić Consult
 
-> Independent product, market and growth consulting for technology, automotive and mobility companies.
+> Independent automotive, autonomous mobility and complex-product consulting.
 
 ## Primary pages
 ${primaryPages.map(([path, description]) => `- [${description}](${urlFor(path)})`).join("\n")}
@@ -92,7 +92,7 @@ ${pages.filter((page) => ["service", "industry"].includes(page.family)).map((pag
 - Rimac Automobili, Rimac Technology and Verne are professional background, not consulting clients or endorsements.
 - This is an independent consultancy, not an official, regulatory, legal, safety, financial or investment authority.
 - Distinguish sourced fact, client evidence, observation, estimate and professional recommendation.
-- Service pages were materially reviewed on 2026-08-21; confirm time-sensitive engagement details directly.
+- Site content was materially reviewed on 2026-08-31; confirm time-sensitive engagement details directly.
 `);
 
 await writeOutput("seo-build.json", `${JSON.stringify({

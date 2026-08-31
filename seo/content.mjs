@@ -6,7 +6,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/tonci4",
   author: "Tonći Žilić",
   image: "/assets/img/tonci-zilic.jpg",
-  lastModified: "2026-08-21",
+  lastModified: "2026-08-31",
   analytics: {
     measurementId: "G-29C2MGDK96",
     siteVerification: "cWyoBFBfdtnz89riM6l5uIQLj1scNgQo-r-FRRWMws0",
@@ -696,11 +696,11 @@ const hubs = [
   {
     path: "/services/",
     family: "hub",
-    title: "Consulting Services for Product, Market & Growth",
-    description: "Explore Žilić Consult services across product strategy, market readiness, market entry, B2B pricing, fundraising and interim leadership.",
-    eyebrow: "Services",
-    h1: "Focused consulting for product, market, funding and growth.",
-    answer: "Choose a focused engagement for the decision or delivery gap in front of your team. Each service page explains the fit, outputs, method and limitations.",
+    title: "Automotive & Mobility Consulting Services | Žilić Consult",
+    description: "Focused consulting across automotive, autonomous mobility and complex products: product strategy, launch, market entry and interim leadership.",
+    eyebrow: "Expertise",
+    h1: "Focused engagements for automotive, mobility and complex products.",
+    answer: "Choose the decision or delivery gap in front of your team. Each engagement is direct, tightly scoped and designed to produce an executable output.",
     children: servicePages.map(({ path, h1, answer }) => ({ path, title: h1, summary: answer })),
   },
   {
@@ -733,9 +733,8 @@ export const pages = [...hubs, ...servicePages, ...audiencePages, ...industryPag
 export const pageByPath = new Map(pages.map((page) => [page.path, page]));
 
 export const nav = [
-  ["/services/", "Services"],
-  ["/for/", "Who I work with"],
-  ["/industries/", "Industries"],
+  ["/services/", "Expertise"],
+  ["/#engagements", "Engagements"],
   ["/about/", "About"],
   ["/how-i-work/", "How I work"],
 ];

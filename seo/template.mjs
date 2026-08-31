@@ -30,7 +30,7 @@ function schemaFor(page) {
       name: site.author,
       url: absolute("/about/"),
       sameAs: [site.linkedin],
-      jobTitle: "Independent product and mobility consultant",
+      jobTitle: "Independent automotive and autonomous mobility consultant",
       worksFor: { "@id": `${site.origin}/#organization` },
     },
     {
@@ -106,7 +106,7 @@ function footer() {
     <div class="site-footer__cols footer-sitemap">
       <div>
         <p class="footer-brand">Žilić Consult</p>
-        <p class="footer-tagline">Independent product, market and growth consulting for technology, automotive and mobility companies.</p>
+        <p class="footer-tagline">Independent automotive, autonomous mobility and complex-product consulting.</p>
       </div>
       <div>
         <p class="footer-label">Explore</p>
@@ -123,7 +123,7 @@ function footer() {
       </div>
       <div>
         <p class="footer-label">Contact</p>
-        <a href="mailto:${site.email}">${site.email}</a>
+        <a href="mailto:${site.email}">Email Tonći</a>
         <a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
@@ -147,11 +147,11 @@ function breadcrumbs(page) {
 function contactBand(page) {
   return `<section class="contact">
   <div class="contact__inner">
-    <h2>Need a clear decision and an executable next step?</h2>
-    <p class="contact__sub">Share the product, market or operating question in front of your team. I will reply directly and confirm whether there is a useful fit.</p>
+    <h2>Have a product, market or launch decision in front of you?</h2>
+    <p class="contact__sub">Send me the situation, the decision and the timeline. I will tell you directly whether I can help and suggest the smallest useful engagement.</p>
     <div class="actions">
-      <a class="btn blueprint btn--cta btn--inverse" href="mailto:${site.email}?subject=${encodeURIComponent(`Consulting enquiry: ${page.eyebrow}`)}">Discuss an engagement${corners}</a>
-      <a class="link-underline--inverse" href="/how-i-work/">See how engagements work</a>
+      <a class="btn blueprint btn--cta btn--inverse" href="mailto:${site.email}?subject=${encodeURIComponent(`20-minute fit call: ${page.eyebrow}`)}&body=Situation%3A%0A%0ADecision%3A%0A%0ATimeline%3A">Book a 20-minute fit call${corners}</a>
+      <a class="link-underline--inverse" href="mailto:${site.email}?subject=${encodeURIComponent(`Consulting enquiry: ${page.eyebrow}`)}&body=Situation%3A%0A%0ADecision%3A%0A%0ATimeline%3A">Send me the problem</a>
     </div>
   </div>
 </section>`;
@@ -160,7 +160,7 @@ function contactBand(page) {
 function hubContent(page) {
   return `<section class="section page-section" aria-labelledby="page-list">
     <div class="section-head section-head--tight">
-      <h2 id="page-list">Explore the canonical topics</h2>
+      <h2 id="page-list">Choose the problem you are solving</h2>
     </div>
     <div class="topic-grid">
       ${page.children.map((child) => `<article class="blueprint topic-card">
@@ -251,7 +251,6 @@ ${header()}
       <p class="hero__kicker">${escapeHtml(page.eyebrow)}</p>
       <h1>${escapeHtml(page.h1)}</h1>
       <p class="answer-first">${escapeHtml(page.answer)}</p>
-      <p class="content-freshness">Service information reviewed <time datetime="${page.lastModified}">21 August 2026</time>.</p>
     </header>
     ${page.family === "hub" ? hubContent(page) : detailContent(page)}
   </article>
