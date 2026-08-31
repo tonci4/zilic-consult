@@ -68,7 +68,7 @@ Sitemap: ${urlFor("/sitemap.xml")}
 `);
 
 const primaryPages = [
-  ["/", "Automotive, autonomous mobility and complex-product consulting overview"],
+  ["/", "Independent product, market and growth consulting overview"],
   ["/services/", "Focused areas of expertise"],
   ["/for/", "Support for CEOs, COOs, product leaders and founders"],
   ["/industries/", "Automotive, autonomous mobility and B2B technology experience"],
@@ -79,7 +79,7 @@ const primaryPages = [
 
 await writeOutput("llms.txt", `# Žilić Consult
 
-> Independent automotive, autonomous mobility and complex-product consulting.
+> Independent product, market and growth consulting for complex businesses.
 
 ## Primary pages
 ${primaryPages.map(([path, description]) => `- [${description}](${urlFor(path)})`).join("\n")}

@@ -696,10 +696,10 @@ const hubs = [
   {
     path: "/services/",
     family: "hub",
-    title: "Automotive & Mobility Consulting Services | Žilić Consult",
-    description: "Focused consulting across automotive, autonomous mobility and complex products: product strategy, launch, market entry and interim leadership.",
+    title: "Product, Market & Growth Consulting Services | Žilić Consult",
+    description: "Focused consulting across product strategy, market readiness, market entry, B2B pricing, fundraising, advisory and interim leadership.",
     eyebrow: "Expertise",
-    h1: "Focused engagements for automotive, mobility and complex products.",
+    h1: "Focused engagements for product, market, funding and growth decisions.",
     answer: "Choose the decision or delivery gap in front of your team. Each engagement is direct, tightly scoped and designed to produce an executable output.",
     children: servicePages.map(({ path, h1, answer }) => ({ path, title: h1, summary: answer })),
   },

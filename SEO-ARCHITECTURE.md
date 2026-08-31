@@ -13,8 +13,8 @@
 
 | Cluster | Primary intent | Canonical page | Supporting concepts |
 | --- | --- | --- | --- |
-| Consultancy overview | automotive and autonomous mobility consultant | `/` | complex products, product strategy, launch, mobility |
-| Service directory | automotive and mobility consulting services | `/services/` | strategy, readiness, entry, pricing, funding, leadership |
+| Consultancy overview | independent product, market and growth consultant | `/` | complex products, product strategy, pricing, funding, growth |
+| Service directory | product, market and growth consulting services | `/services/` | strategy, readiness, entry, pricing, funding, leadership |
 | Product strategy | product strategy consultant | `/services/product-mobility-strategy/` | roadmaps, requirements, service design, mobility product |
 | Market readiness | market readiness consultant | `/services/market-readiness/` | validation, segmentation, positioning, buying process |
 | Market entry | market entry consultant | `/services/market-entry-launch/` | geographic expansion, launch, partnerships, operations |

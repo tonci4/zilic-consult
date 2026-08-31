@@ -30,7 +30,7 @@ function schemaFor(page) {
       name: site.author,
       url: absolute("/about/"),
       sameAs: [site.linkedin],
-      jobTitle: "Independent automotive and autonomous mobility consultant",
+      jobTitle: "Independent product, market and growth consultant",
       worksFor: { "@id": `${site.origin}/#organization` },
     },
     {
@@ -106,7 +106,7 @@ function footer() {
     <div class="site-footer__cols footer-sitemap">
       <div>
         <p class="footer-brand">Žilić Consult</p>
-        <p class="footer-tagline">Independent automotive, autonomous mobility and complex-product consulting.</p>
+        <p class="footer-tagline">Independent product, market and growth consulting for complex businesses.</p>
       </div>
       <div>
         <p class="footer-label">Explore</p>
@@ -147,7 +147,7 @@ function breadcrumbs(page) {
 function contactBand(page) {
   return `<section class="contact">
   <div class="contact__inner">
-    <h2>Have a product, market or launch decision in front of you?</h2>
+    <h2>Have a product, market or growth decision in front of you?</h2>
     <p class="contact__sub">Send me the situation, the decision and the timeline. I will tell you directly whether I can help and suggest the smallest useful engagement.</p>
     <div class="actions">
       <a class="btn blueprint btn--cta btn--inverse" href="mailto:${site.email}?subject=${encodeURIComponent(`20-minute fit call: ${page.eyebrow}`)}&body=Situation%3A%0A%0ADecision%3A%0A%0ATimeline%3A">Book a 20-minute fit call${corners}</a>
