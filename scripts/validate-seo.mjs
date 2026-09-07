@@ -124,6 +124,26 @@ for (const file of htmlFiles) {
     try {
       const parsed = JSON.parse(block);
       if (parsed["@context"] !== "https://schema.org") fail(rel, "JSON-LD must use schema.org context");
+      const graph = parsed["@graph"] || [];
+      const person = graph.find((node) => node["@type"] === "Person");
+      const organization = graph.find((node) => node["@id"] === `${site.origin}/#organization`);
+      if (!person || person.name !== site.author || !person.sameAs?.includes(site.linkedin)) fail(rel, "missing consistent Person identity and LinkedIn reference");
+      if (person?.jobTitle !== site.jobTitle || person?.worksFor?.["@id"] !== `${site.employer.url}#organization`) fail(rel, "current employment is missing or stale");
+      if (organization?.sameAs?.includes(site.linkedin)) fail(rel, "company must not be equated with the founder's personal profile");
+      const ids = new Set(graph.map((node) => node["@id"]));
+      for (const node of graph) {
+        for (const key of ["isPartOf", "mainEntity", "author", "publisher", "worksFor", "founder", "mainEntityOfPage"]) {
+          const reference = node[key]?.["@id"];
+          if (reference && !ids.has(reference)) fail(rel, `unresolved ${key} entity: ${reference}`);
+        }
+        if (node["@type"] === "BreadcrumbList") {
+          const items = node.itemListElement || [];
+          if (items.length < 2 || items.some((item, index) => !item.name || !item.item || item.position !== index + 1)) fail(rel, "breadcrumbs need at least two named, ordered items");
+          if (new Set(items.map((item) => item.item)).size !== items.length) fail(rel, "duplicate breadcrumb target");
+        }
+      }
+      if (pagePath === "/about/" && !graph.some((node) => node["@type"] === "ProfilePage" && node.mainEntity?.["@id"] === person?.["@id"])) fail(rel, "About must identify the person as its ProfilePage mainEntity");
+      if (pages.find((page) => page.path === pagePath)?.family === "insight" && !graph.some((node) => node["@type"] === "Article" && node.author?.["@id"] === person?.["@id"] && node.datePublished && node.dateModified)) fail(rel, "insight needs Article authorship and publication dates");
     } catch (error) {
       fail(rel, `invalid JSON-LD: ${error.message}`);
     }

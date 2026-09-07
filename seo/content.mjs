@@ -1,3 +1,5 @@
+import { infotainmentPage, robotaxiGuide } from "./robotaxi.mjs";
+
 export const site = {
   name: "Žilić Consult",
   origin: process.env.SITE_ORIGIN || "https://www.zilic-consult.com",
@@ -5,8 +7,11 @@ export const site = {
   email: "tonci.zilic18@gmail.com",
   linkedin: "https://www.linkedin.com/in/tonci4",
   author: "Tonći Žilić",
+  alternateName: "Tonci Zilic",
+  jobTitle: "Head of Robotaxi",
+  employer: { name: "Onde", url: "https://onde.app/" },
   image: "/assets/img/tonci-zilic.jpg",
-  lastModified: "2026-08-31",
+  lastModified: "2026-09-08",
   analytics: {
     measurementId: "G-29C2MGDK96",
     siteVerification: "cWyoBFBfdtnz89riM6l5uIQLj1scNgQo-r-FRRWMws0",
@@ -14,6 +19,7 @@ export const site = {
 };
 
 const servicePages = [
+  infotainmentPage,
   {
     path: "/services/product-mobility-strategy/",
     family: "service",
@@ -176,15 +182,16 @@ const servicePages = [
   },
   {
     path: "/services/robotaxi-autonomous-mobility/",
+    lastModified: "2026-09-07",
     family: "service",
-    title: "Robotaxi & Autonomous Mobility Consultant | Žilić Consult",
-    description: "Robotaxi and autonomous mobility consulting across product definition, rider experience, fleet operations, market launch and programme readiness.",
+    title: "Robotaxi & Autonomous Mobility Consultant | Tonći Žilić",
+    description: "Robotaxi consulting by Tonći Žilić, Head of Robotaxi at Onde: autonomous ride-hailing, passenger experience, fleet integration and European launch readiness.",
     eyebrow: "Robotaxi and autonomous mobility",
     h1: "Turn autonomous technology into a service people can actually use.",
-    answer: "Žilić Consult supports robotaxi and autonomous mobility programmes where vehicle technology, rider experience, fleet operations and city launch must become one coherent product.",
+    answer: "Tonći Žilić supports robotaxi and autonomous mobility programmes through Žilić Consult, connecting vehicle capability, passenger experience, fleet operations and city launch into one coherent service.",
     intro: [
       "A robotaxi service is more than an autonomous vehicle. Booking, pickup, access, in-cabin experience, remote assistance, cleaning, charging, incident handling and local operations all affect whether the service works.",
-      "The work draws on direct robotaxi product and programme experience while remaining independent of any vehicle, autonomy stack or operating platform vendor.",
+      "Tonći Žilić is Head of Robotaxi at Onde, with earlier ride-experience and infotainment product work at Project 3 Mobility / Verne. This consulting work connects autonomous ride-hailing strategy, passenger experience, fleet interfaces and launch readiness. Availability and conflicts with his current role are checked before an engagement.",
     ],
     situations: [
       "A programme needs an end-to-end customer and service definition.",
@@ -200,7 +207,7 @@ const servicePages = [
       "Launch gates, scenario reviews and programme risks",
     ],
     process: "Work is grounded in the intended operating domain, customer journey and service responsibilities. Technical capability is treated as an input to the product, not evidence that the complete service is ready.",
-    related: ["/industries/autonomous-mobility/", "/industries/automotive/", "/services/market-entry-launch/", "/for/coos/"],
+    related: ["/about/", "/insights/eu-robotaxi-launch-readiness/", "/services/infotainment-connected-vehicle/", "/industries/autonomous-mobility/"],
     faqs: [
       ["Do you develop autonomous-driving software?", "No. The focus is product, programme, rider experience, service operations and launch integration around the autonomous-driving system."],
       ["Can you support a specific city launch?", "Yes, subject to scope and access. Local regulatory and legal conclusions must be confirmed by qualified local authorities or advisers."],
@@ -438,6 +445,7 @@ const industryPages = [
   },
   {
     path: "/industries/autonomous-mobility/",
+    lastModified: "2026-09-07",
     family: "industry",
     title: "Autonomous Mobility & Robotaxi Advisor | Žilić Consult",
     description: "Autonomous mobility and robotaxi advisory for product, rider experience, fleet operations, service readiness, partnerships and city launch.",
@@ -462,9 +470,9 @@ const industryPages = [
       "Market launch plan and readiness governance",
     ],
     process: "The work distinguishes product requirements, engineering evidence, operational assumptions and external regulatory confirmation. None is presented as interchangeable with another.",
-    related: ["/services/robotaxi-autonomous-mobility/", "/services/market-entry-launch/", "/for/coos/", "/sources/"],
+    related: ["/services/robotaxi-autonomous-mobility/", "/insights/eu-robotaxi-launch-readiness/", "/services/infotainment-connected-vehicle/", "/about/"],
     faqs: [
-      ["Is the advice tied to a specific autonomy stack?", "No. The work is vendor-independent and focuses on product, programme, service operations and launch integration."],
+      ["Is the advice tied to a specific autonomy stack?", "The scope focuses on product, programme, service operations and launch integration. Tonći Žilić is Head of Robotaxi at Onde; any consulting mandate is assessed for availability and conflicts before work starts."],
       ["Can you certify safety or regulatory compliance?", "No. Safety cases, certification and legal compliance require the responsible qualified organizations and authorities."],
     ],
   },
@@ -505,20 +513,44 @@ const industryPages = [
 const institutionalPages = [
   {
     path: "/about/",
+    lastModified: "2026-09-08",
     family: "institutional",
-    title: "About Tonći Žilić | Product & Mobility Consultant",
-    description: "Background of Tonći Žilić, an independent product and mobility consultant with experience at Rimac, Verne and as a technology company founder.",
+    title: "Tonći Žilić | Head of Robotaxi, Onde | Robotaxi & AV Strategy",
+    description: "Tonći Žilić (Tonci Zilic), Head of Robotaxi at Onde, founder of Žilić Consult. Robotaxi and AV product strategy; ride experience at Verne, connected vehicles at Rimac.",
     eyebrow: "About",
-    h1: "Tonći Žilić: product, programme and company-building experience.",
-    answer: "Tonći Žilić is an independent consultant working with founders and executives on product, market, commercial and operating decisions in technology, automotive and mobility.",
+    h1: "Tonći Žilić — Head of Robotaxi at Onde. Robotaxi and AV product strategy.",
+    answer: "Tonći Žilić, also published as Tonci Zilic, is a robotaxi and autonomous vehicle (AV) product and strategy practitioner based in Zagreb, Head of Robotaxi at Onde and founder of Žilić Consult. His work connects robotaxi strategy, European launch planning, passenger experience, in-vehicle infotainment and connected vehicle services.",
     intro: [
-      "His background spans connected vehicle services, automotive-grade product and programme work, robotaxi product definition and operations, and co-founding technology companies.",
-      "He joined Rimac Automobili among its first hundred employees, later held roles at Rimac Technology and Verne, and has co-founded SheepAI and Serenity. These organizations are professional experience unless explicitly identified as a consulting client.",
+      "He joined Onde as Head of Robotaxi in September 2026. Through Žilić Consult, he also works with founders and executives on product, market and operating decisions, with availability and conflicts reviewed before each engagement.",
+      "At Project 3 Mobility / Verne, he was Product Manager for ride experience, including infotainment, from April 2024 to December 2025. In April 2026 Verne, Pony.ai and Uber opened what the partners describe as Europe's first commercial robotaxi service in Zagreb. At Rimac Technology, he was Product Manager from January 2022 to April 2024, working across digital services, over-the-air (OTA) updates, telemetry, apps, cloud and IVI integration with backend services.",
+      "His earlier background includes Rimac Automobili. Alongside his mobility work, he co-founded SheepAI and is a co-owner of Serenity. Onde is his current employer; Rimac and Verne are professional background. These relationships do not imply that any organization is a consulting client or endorses this site.",
+    ],
+    sections: [
+      {
+        heading: "Areas of expertise",
+        items: [
+          "Robotaxi and autonomous vehicle (AV) strategy: business model, launch-city selection, unit economics, regulatory pathway and partnerships for European robotaxi services",
+          "Robotaxi and autonomous ride-hailing product: rider journey, in-cabin experience, remote assistance, fleet and operations interfaces",
+          "European robotaxi launch readiness: operating domain, passenger journey, fleet operations and launch gates",
+          "Connected vehicles and infotainment: IVI, HMI, apps, cloud, telemetry and over-the-air updates",
+          "Product, market-entry and commercial strategy for mobility and B2B technology companies, including early-stage company building, pricing and fundraising",
+        ],
+      },
+      {
+        heading: "Robotaxi and autonomous mobility track record",
+        paragraphs: ["Dates and roles follow the public LinkedIn career record linked below. Previous employers are professional background, not consulting clients."],
+        items: [
+          "2026 to present: Head of Robotaxi at Onde.",
+          "2024 to 2025: Product Manager for ride experience, including infotainment, at Project 3 Mobility / Verne in Zagreb, in the two years before Verne, Pony.ai and Uber launched Europe's first commercial robotaxi service there in April 2026.",
+          "2022 to 2024: Product Manager at Rimac Technology for digital services, over-the-air updates, telemetry, apps, cloud and IVI integration; public talk Fleet Management – Reinvented at the WeAreDevelopers World Congress in June 2022.",
+          "Earlier: Rimac Automobili. Alongside mobility work, co-founder of SheepAI and co-owner of Serenity.",
+        ],
+      },
     ],
     situations: [
       "Product strategy across hardware, software and service operations",
       "Automotive and connected vehicle product programmes",
-      "Robotaxi rider experience and launch readiness",
+      "Robotaxi passenger experience, infotainment and European launch readiness",
       "Early-stage product, commercial and fundraising decisions",
     ],
     deliverables: [
@@ -529,9 +561,18 @@ const institutionalPages = [
       "Practical outputs designed for decisions and delivery",
     ],
     process: "Availability and conflicts are checked before an engagement. Claims on this site describe professional background and service capability; they do not imply endorsement by previous employers.",
-    related: ["/how-i-work/", "/methodology/", "/industries/automotive/", "/industries/autonomous-mobility/"],
+    related: ["/services/robotaxi-autonomous-mobility/", "/services/infotainment-connected-vehicle/", "/insights/eu-robotaxi-launch-readiness/", "/how-i-work/"],
+    sources: [
+      { title: "Tonci Zilic — LinkedIn career record", url: "https://www.linkedin.com/in/tonci4/", note: "First-person record for current and previous roles, checked 7 September 2026." },
+      { title: "Fleet Management – Reinvented, WeAreDevelopers World Congress", url: "https://www.wearedevelopers.com/en/videos/473/fleet-management-reinvented", note: "Tonci Zilic, 15 June 2022. Public talk about Rimac telemetry, connectivity, apps and OTA updates." },
+      { title: "Onde — official company website", url: "https://onde.app/", note: "Company context. The role and start date above are sourced from the public career record." },
+      { title: "Pony.ai: launch of Europe's first commercial robotaxi service in Zagreb with Verne and Uber", url: "https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-advances-overseas-deployment-launch-europes-first", note: "Company announcement, 8 April 2026, for the Verne launch context. Tonći Žilić's Verne role ended in December 2025; the launch is cited as public context, not as his work." },
+    ],
     faqs: [
-      ["Where is Žilić Consult based?", "The consultancy works internationally and confirms location, travel and contracting details directly for each engagement."],
+      ["Who is Head of Robotaxi at Onde?", "Tonći Žilić holds the role of Head of Robotaxi at Onde, starting in September 2026 according to his public LinkedIn career record."],
+      ["What robotaxi and autonomous vehicle experience does Tonći Žilić have?", "He leads robotaxi at Onde, and from 2024 to 2025 was Product Manager for rider experience, including infotainment, at Project 3 Mobility / Verne, the Zagreb operator that launched Europe's first commercial robotaxi service with Pony.ai and Uber in April 2026. Before that he was a connected-vehicle product manager at Rimac Technology."],
+      ["What is his infotainment background?", "His Product Manager role at Project 3 Mobility / Verne covered ride experience, including infotainment. His earlier Rimac Technology role included IVI integration with backend services and a connected-services roadmap."],
+      ["Where is Tonći Žilić based?", "His public professional profile lists Zagreb, Croatia. Consulting location, travel and contracting details are confirmed for each engagement."],
       ["How can I verify the professional background?", "The LinkedIn profile linked on this site provides the current public career record. Engagement-specific references can be discussed where confidentiality permits."],
     ],
   },
@@ -602,6 +643,7 @@ const institutionalPages = [
   },
   {
     path: "/sources/",
+    lastModified: "2026-09-07",
     family: "trust",
     title: "Sources, Provenance & Claim Limitations | Žilić Consult",
     description: "Source policy for Žilić Consult: authoritative external data, client-provided evidence, professional background claims, retrieval dates and limitations.",
@@ -610,7 +652,7 @@ const institutionalPages = [
     answer: "Žilić Consult prefers primary and authoritative sources, records when time-sensitive information was observed or retrieved, and states when a conclusion is an estimate or professional judgement.",
     intro: [
       "Client engagements may use official statistics, laws and regulator publications, company filings, product documentation, market databases, interviews and client-provided operating data. The best source depends on the decision and jurisdiction.",
-      "Public pages on this site contain service descriptions and professional background. Previous employers are identified as experience, not as consulting clients, endorsements or current affiliations.",
+      "Public pages on this site contain service descriptions and professional background. Onde is identified as Tonći Žilić's current employer, with the role sourced from his public LinkedIn career record. Rimac and Verne are previous professional experience. Employer references do not imply consulting clients or endorsement.",
     ],
     situations: [
       "Official sources are used for legal status, public policy and formal statistics where available.",
@@ -695,6 +737,7 @@ const institutionalPages = [
 const hubs = [
   {
     path: "/services/",
+    lastModified: "2026-09-07",
     family: "hub",
     title: "Product, Market & Growth Consulting Services | Žilić Consult",
     description: "Focused consulting across product strategy, market readiness, market entry, B2B pricing, fundraising, advisory and interim leadership.",
@@ -725,8 +768,8 @@ const hubs = [
   },
 ];
 
-export const pages = [...hubs, ...servicePages, ...audiencePages, ...industryPages, ...institutionalPages].map((page) => ({
-  lastModified: site.lastModified,
+export const pages = [...hubs, ...servicePages, ...audiencePages, ...industryPages, ...institutionalPages, robotaxiGuide].map((page) => ({
+  lastModified: "2026-08-31",
   ...page,
 }));
 

@@ -13,7 +13,7 @@ const absolute = (path) => new URL(path, site.origin).href;
 
 const corners = '<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>';
 
-function schemaFor(page) {
+export function schemaFor(page) {
   const canonical = absolute(page.path);
   const graph = [
     {
@@ -22,26 +22,46 @@ function schemaFor(page) {
       name: site.name,
       url: site.origin,
       founder: { "@id": `${site.origin}/#person` },
-      sameAs: [site.linkedin],
     },
     {
       "@type": "Person",
       "@id": `${site.origin}/#person`,
       name: site.author,
+      alternateName: site.alternateName,
       url: absolute("/about/"),
       sameAs: [site.linkedin],
-      jobTitle: "Independent product, market and growth consultant",
-      worksFor: { "@id": `${site.origin}/#organization` },
+      image: absolute(site.image),
+      jobTitle: site.jobTitle,
+      description: "Head of Robotaxi at Onde and founder of Žilić Consult; robotaxi and autonomous vehicle (AV) product and strategy practitioner based in Zagreb, Croatia; previously Product Manager for rider experience at Verne before its 2026 commercial robotaxi launch, and connected-vehicle Product Manager at Rimac Technology.",
+      homeLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Zagreb", addressCountry: "HR" } },
+      worksFor: { "@id": `${site.employer.url}#organization` },
+      knowsAbout: ["Robotaxi and autonomous vehicle (AV) strategy", "Robotaxi product strategy", "European robotaxi strategy and launch planning", "Robotaxi launch-city selection", "Robotaxi unit economics", "Autonomous mobility business models and partnerships", "Autonomous ride-hailing", "Robotaxi passenger experience", "In-vehicle infotainment", "Connected vehicle services"],
     },
     {
-      "@type": "WebPage",
+      "@type": "Organization",
+      "@id": `${site.employer.url}#organization`,
+      name: site.employer.name,
+      url: site.employer.url,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.origin}/#website`,
+      url: absolute("/"),
+      name: site.name,
+      inLanguage: site.language,
+      publisher: { "@id": `${site.origin}/#organization` },
+    },
+    {
+      "@type": page.path === "/about/" ? "ProfilePage" : "WebPage",
       "@id": `${canonical}#webpage`,
       url: canonical,
       name: page.title,
       description: page.description,
       inLanguage: site.language,
+      dateModified: page.lastModified,
       isPartOf: { "@id": `${site.origin}/#website` },
-      about: page.family === "institutional"
+      ...(page.path === "/about/" ? { mainEntity: { "@id": `${site.origin}/#person` } } : {}),
+      about: page.path === "/about/"
         ? { "@id": `${site.origin}/#person` }
         : { "@id": `${site.origin}/#organization` },
     },
@@ -57,6 +77,22 @@ function schemaFor(page) {
     },
   ];
 
+  if (page.family === "insight") {
+    graph.push({
+      "@type": "Article",
+      "@id": `${canonical}#article`,
+      headline: page.h1,
+      description: page.description,
+      mainEntityOfPage: { "@id": `${canonical}#webpage` },
+      author: { "@id": `${site.origin}/#person` },
+      publisher: { "@id": `${site.origin}/#organization` },
+      datePublished: page.datePublished,
+      dateModified: page.lastModified,
+      inLanguage: site.language,
+      citation: (page.sources || []).map((source) => source.url),
+    });
+  }
+
   if (page.family === "service") {
     graph.push({
       "@type": "Service",
@@ -65,15 +101,17 @@ function schemaFor(page) {
       description: page.answer,
       url: canonical,
       provider: { "@id": `${site.origin}/#organization` },
-      areaServed: "International",
+      areaServed: page.areaServed || "International",
+      ...(page.serviceType ? { serviceType: page.serviceType } : {}),
     });
   }
 
-  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replaceAll("</", "<\\/");
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": page.path === "/" ? graph.filter((node) => node["@type"] !== "BreadcrumbList") : graph }).replaceAll("</", "<\\/");
 }
 
 function breadcrumbsFor(page) {
   const crumbs = [{ path: "/", label: "Home" }];
+  if (page.path === "/") return crumbs;
   const [family] = page.path.split("/").filter(Boolean);
   const parents = {
     services: "Services",
@@ -107,6 +145,7 @@ function footer() {
       <div>
         <p class="footer-brand">Žilić Consult</p>
         <p class="footer-tagline">Independent product, market and growth consulting for complex businesses.</p>
+        <p class="footer-tagline">Founded by <a href="/about/">Tonći Žilić</a>, Head of Robotaxi at Onde, with experience in robotaxi passenger experience, infotainment and connected vehicle services.</p>
       </div>
       <div>
         <p class="footer-label">Explore</p>
@@ -183,18 +222,19 @@ function detailContent(page) {
   } : null)).filter(Boolean);
 
   return `${page.intro.map((paragraph) => `<p class="page-lede">${escapeHtml(paragraph)}</p>`).join("")}
-  <section class="section page-section">
+  ${(page.sections || []).map((section) => `<section class="section page-section"><h2>${escapeHtml(section.heading)}</h2>${(section.paragraphs || []).map((paragraph) => `<p class="page-lede">${escapeHtml(paragraph)}</p>`).join("")}${section.items?.length ? `<ul class="rule-list detail-list">${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}</section>`).join("")}
+  ${page.situations.length ? `<section class="section page-section">
     <div class="split split--top">
       <div><h2>${escapeHtml(situationsTitle)}</h2></div>
       <ul class="rule-list detail-list">${page.situations.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
     </div>
-  </section>
-  <section class="section page-section">
+  </section>` : ""}
+  ${page.deliverables.length ? `<section class="section page-section">
     <div class="split split--top">
       <div><h2>${escapeHtml(deliverablesTitle)}</h2></div>
       <ul class="rule-list detail-list">${page.deliverables.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
     </div>
-  </section>
+  </section>` : ""}
   <section class="section page-section evidence-panel" aria-labelledby="method-heading">
     <p class="page-eyebrow">Method and limitations</p>
     <h2 id="method-heading">How the work is grounded</h2>
@@ -204,6 +244,10 @@ function detailContent(page) {
   ${page.faqs?.length ? `<section class="section page-section" aria-labelledby="questions-heading">
     <div class="section-head section-head--tight"><h2 id="questions-heading">Common questions</h2></div>
     <div class="faq-list">${page.faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join("")}</div>
+  </section>` : ""}
+  ${page.sources?.length ? `<section class="section page-section" aria-labelledby="sources-heading">
+    <h2 id="sources-heading">Sources and further reading</h2>
+    <ul class="rule-list detail-list">${page.sources.map((source) => `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.title)}</a><p>${escapeHtml(source.note)}</p></li>`).join("")}</ul>
   </section>` : ""}
   ${related.length ? `<section class="section page-section" aria-labelledby="related-heading">
     <div class="section-head section-head--tight"><h2 id="related-heading">Related expertise</h2></div>
@@ -252,6 +296,7 @@ ${header()}
       <p class="hero__kicker">${escapeHtml(page.eyebrow)}</p>
       <h1>${escapeHtml(page.h1)}</h1>
       <p class="answer-first">${escapeHtml(page.answer)}</p>
+      ${["insight", "service"].includes(page.family) ? `<p class="evidence-note">By <a href="/about/">${site.author}</a> · Head of Robotaxi at Onde · <time datetime="${page.lastModified}">Updated ${new Date(`${page.lastModified}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time></p>` : ""}
     </header>
     ${page.family === "hub" ? hubContent(page) : detailContent(page)}
   </article>

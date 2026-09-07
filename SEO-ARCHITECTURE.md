@@ -7,6 +7,7 @@
 - Language: English only. Additional languages must be released as complete, reciprocal clusters rather than partial navigation translations.
 - Content rule: one durable page per legitimate intent. Minor keyword modifiers do not receive separate pages.
 - Claim rule: previous employers are professional background, not consulting clients or endorsements.
+- Scope rule: relevance is built through the verified profile, sourced public facts and insights that carry the personal-view disclaimer. New engagement formats or method descriptions are not added without the owner's review.
 - Ranking rule: the implementation improves eligibility, clarity and crawlability; it does not claim or guarantee first position.
 
 ## 1. Intent and keyword-cluster map
@@ -32,7 +33,9 @@
 | Automotive | automotive product consultant | `/industries/automotive/` | connected vehicles, automotive-grade programmes |
 | Autonomous mobility | autonomous mobility advisor | `/industries/autonomous-mobility/` | robotaxi, fleet, service, city launch |
 | B2B technology | B2B technology consultant | `/industries/technology-b2b/` | complex products, enterprise offers, growth |
-| Trust and identity | consultant background | `/about/` | Rimac, Verne, founder, product leadership |
+| Trust and identity | Tonći Žilić / Tonci Zilic, robotaxi and AV strategy | `/about/` | Head of Robotaxi at Onde, Verne pre-launch rider experience, Rimac, areas of expertise, dated track record |
+| Infotainment | infotainment and connected vehicle consultant | `/services/infotainment-connected-vehicle/` | IVI, automotive HMI, passenger experience, apps, cloud, OTA |
+| EU robotaxi planning | European robotaxi launch readiness | `/insights/eu-robotaxi-launch-readiness/` | operating domain, passenger journey, fleet, local readiness |
 | Engagement intent | consulting process and formats | `/how-i-work/` | sprint, project, workshop, retainer, interim |
 | Method and trust | evidence and reliability | `/methodology/` | fact, observation, estimate, assumption, recommendation |
 | Provenance | source policy | `/sources/` | authority, retrieval date, limitations, confidentiality |
@@ -44,6 +47,7 @@ Search language should be revalidated with Search Console query data after index
 ```text
 /
 ├── services/
+│   ├── infotainment-connected-vehicle/
 │   ├── product-mobility-strategy/
 │   ├── market-readiness/
 │   ├── market-entry-launch/
@@ -61,6 +65,8 @@ Search language should be revalidated with Search Console query data after index
 │   ├── automotive/
 │   ├── autonomous-mobility/
 │   └── technology-b2b/
+├── insights/
+│   └── eu-robotaxi-launch-readiness/
 ├── about/
 ├── how-i-work/
 ├── methodology/
@@ -140,3 +146,25 @@ npm run check
 9. Regenerate after content changes with `npm run check`; sitemap dates come from the edited page records.
 
 The generated `dist/seo-build.json` records exact page, family, sitemap and URL counts for each build.
+
+## 7 September 2026 update
+
+- The public LinkedIn career record was checked on 7 September 2026 and already listed Head of Robotaxi at Onde, September 2026–present.
+- Added a substantive infotainment service page and European robotaxi launch guide; 27 pages total, 9 services and 1 insight.
+- The homepage, About page, robotaxi service and autonomous mobility page connect the verified current role with previous Rimac and Project 3 Mobility / Verne experience.
+- Shared Person, employer Organization and WebSite entities are generated from one source, including the homepage. The personal LinkedIn profile belongs only to Person.sameAs.
+- About uses ProfilePage.mainEntity; the guide uses Article with visible author, dates and source links.
+- JSON-LD validation now checks identity, employment, local entity references, profile/article requirements and breadcrumb completeness.
+- The wildcard robots policy already permits search crawlers. No hidden keyword blocks, crawler-specific content, ranking instructions or meta keywords were added. llms.txt remains an optional discovery summary.
+- Google Analytics and Search Console property settings were preserved. Operational reports are excluded from deployment by .vercelignore.
+
+## 8 September 2026 draft — pending owner review, not deployed
+
+Goal: be findable by search engines and AI assistants for European robotaxi and autonomous vehicle strategy queries. Targets, query map and measurement are kept in a local working file that is not tracked in this repository.
+
+- Scope rule added above. No new service pages were added and no engagement method is described; the change is confined to the profile, one homepage sentence and shared entity data.
+- About rewritten as a factual expert profile: title and H1 carry "robotaxi and AV strategy"; new "Areas of expertise" and dated "Robotaxi and autonomous mobility track record" sections; one new FAQ on robotaxi and AV experience; Pony.ai launch release added as context, with a note that the owner's Verne role ended before the launch. All facts remain those verified against the LinkedIn record on 7 September 2026.
+- Homepage: one added sentence in the autonomous-mobility proof card about Verne's April 2026 launch. Hero, engagements table, navigation, layout and H1 unchanged.
+- The About summary sentence is reused by the "Related expertise" card on nine pages that link to About; those cards change with it.
+- Shared data: Person description, `knowsAbout` and `homeLocation` (Zagreb, HR); llms.txt summary and profile paragraph. Template records now support section `items` lists and per-page Service `areaServed` and `serviceType`.
+- `lastModified` bumped to 2026-09-08 for the homepage and About only. 27 pages, unchanged count.

@@ -1,67 +1,17 @@
 # SEO production verification
 
-Verified: 21 August 2026
+Verified: 7 September 2026
 
-## Production
+- Canonical host: https://www.zilic-consult.com
+- Production deployment: dpl_3NfwAkb8GritESPrmEdgRtSE7NQC
+- Deployment state: READY
+- 27 HTML pages, 27 sitemap URLs, one flat sitemap
+- 9 services, 4 audience pages, 3 industry pages, 3 hubs, 2 institutional pages, 2 trust pages, 2 legal pages, 1 insight and 1 homepage
 
-- Canonical host: `https://www.zilic-consult.com`
-- Production deployment: `dpl_E1gAdE3MjundkitvqwrHAhrenexK`
-- Deployment state: `READY`
-- Production alias: `https://www.zilic-consult.com`
-- Apex host: `https://zilic-consult.com/` resolves to the `www` canonical host
+## Validation
 
-## Exact generated counts
+The production build and SEO validator passed with zero errors. Checks cover unique metadata, H1s and canonicals; internal links; sitemap completeness; JSON-LD syntax; consistent Person identity and employment; resolved entity references; ProfilePage and Article requirements; and named, ordered breadcrumbs.
 
-- HTML pages: 25
-- Sitemap URLs: 25
-- Flat sitemap files: 1
-- Services: 8
-- Audience pages: 4
-- Industry pages: 3
-- Family hubs: 3
-- Institutional pages: 2
-- Trust pages: 2
-- Legal pages: 2
-- Homepage: 1
+All 27 production HTML pages returned HTTP 200 and matched the corresponding validated build output exactly. robots.txt and llms.txt matched the generated output. The About page returned the updated role to requests carrying Googlebot, OAI-SearchBot, Claude-SearchBot, PerplexityBot and bingbot user-agent strings. These are access checks, not evidence of real crawler visits or index inclusion.
 
-## Automated results
-
-`npm run check`:
-
-- Static build: passed
-- SEO validator: passed
-- Validation errors: 0
-- Duplicate titles: 0
-- Duplicate H1s: 0
-- Duplicate canonicals: 0
-- Broken internal links: 0
-- Orphan generated pages: 0
-- Invalid JSON-LD documents: 0
-- Missing sitemap URLs: 0
-- Invalid hreflang targets: 0
-- Meta descriptions outside the required 110–170 character range: 0
-
-## Live verification
-
-- Fetched every URL listed in the flat sitemap.
-- 25 of 25 URLs returned `200`.
-- 25 of 25 pages returned the expected `https://www.zilic-consult.com` self-canonical.
-- 25 of 25 pages contained exactly one H1 in the live response.
-- `/robots.txt` returned the canonical flat sitemap and blocked `/api/` and `/_vercel/`.
-- The automotive industry page was visually and accessibility-tree checked in the production browser.
-
-## Google Search Console handoff
-
-Add the `https://www.zilic-consult.com/` URL-prefix property or verify the `zilic-consult.com` domain property, then submit:
-
-`https://www.zilic-consult.com/sitemap.xml`
-
-Representative inspection URLs:
-
-- `https://www.zilic-consult.com/`
-- `https://www.zilic-consult.com/services/product-mobility-strategy/`
-- `https://www.zilic-consult.com/for/ceos/`
-- `https://www.zilic-consult.com/industries/automotive/`
-- `https://www.zilic-consult.com/methodology/`
-
-Search performance cannot be guaranteed by technical implementation. Rankings depend on competition, authority, links, content usefulness, query fit and time. Use Search Console query and page data to guide the next content iteration.
+Google Search Console accepted https://www.zilic-consult.com/sitemap.xml on 7 September 2026 and reported Success with 27 discovered pages. Indexing and ranking remain controlled by Google.
