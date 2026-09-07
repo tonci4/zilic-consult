@@ -3,3 +3,4 @@
 .env*
 .claude/
 dist/
+SEO-AI-*.md
