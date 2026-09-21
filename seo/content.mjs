@@ -11,7 +11,7 @@ export const site = {
   jobTitle: "Head of Robotaxi",
   employer: { name: "Onde", url: "https://onde.app/" },
   image: "/assets/img/tonci-zilic.jpg",
-  lastModified: "2026-09-08",
+  lastModified: "2026-09-21",
   analytics: {
     measurementId: "G-29C2MGDK96",
     siteVerification: "cWyoBFBfdtnz89riM6l5uIQLj1scNgQo-r-FRRWMws0",
