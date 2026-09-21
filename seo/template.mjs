@@ -35,7 +35,7 @@ export function schemaFor(page) {
       description: "Head of Robotaxi at Onde and founder of Žilić Consult; robotaxi and autonomous vehicle (AV) product and strategy practitioner based in Zagreb, Croatia; previously Product Manager for rider experience at Verne before its 2026 commercial robotaxi launch, and connected-vehicle Product Manager at Rimac Technology.",
       homeLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Zagreb", addressCountry: "HR" } },
       worksFor: { "@id": `${site.employer.url}#organization` },
-      knowsAbout: ["Robotaxi and autonomous vehicle (AV) strategy", "Robotaxi product strategy", "European robotaxi strategy and launch planning", "Robotaxi launch-city selection", "Robotaxi unit economics", "Autonomous mobility business models and partnerships", "Autonomous ride-hailing", "Robotaxi passenger experience", "In-vehicle infotainment", "Connected vehicle services"],
+      knowsAbout: ["Business strategy", "Product strategy", "Market entry", "B2B pricing", "Company building", "Robotaxi and autonomous vehicle (AV) strategy", "Robotaxi product strategy", "European robotaxi strategy and launch planning", "Robotaxi launch-city selection", "Robotaxi unit economics", "Autonomous mobility business models and partnerships", "Autonomous ride-hailing", "Robotaxi passenger experience", "In-vehicle infotainment", "Connected vehicle services"],
     },
     {
       "@type": "Organization",
@@ -145,7 +145,7 @@ function footer() {
       <div>
         <p class="footer-brand">Žilić Consult</p>
         <p class="footer-tagline">Independent product, market and growth consulting for complex businesses.</p>
-        <p class="footer-tagline">Founded by <a href="/about/">Tonći Žilić</a>, Head of Robotaxi at Onde, with experience in robotaxi passenger experience, infotainment and connected vehicle services.</p>
+        <p class="footer-tagline">Founded by <a href="/about/">Tonći Žilić</a>, Head of Robotaxi at Onde, advising founders and executives on product strategy, market entry, pricing and growth.</p>
       </div>
       <div>
         <p class="footer-label">Explore</p>

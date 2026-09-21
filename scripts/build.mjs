@@ -45,7 +45,7 @@ await mkdir(output, { recursive: true });
 await cp(join(root, "assets"), join(output, "assets"), { recursive: true });
 
 const homepageSource = await readFile(join(root, "index.html"), "utf8");
-const home = { path: "/", family: "home", title: "Tonći Žilić | Robotaxi & Infotainment | Žilić Consult", description: "Tonći Žilić, Head of Robotaxi at Onde and founder of Žilić Consult. Robotaxi strategy, European launch readiness, infotainment and connected vehicle expertise.", lastModified: site.lastModified };
+const home = { path: "/", family: "home", title: "Tonći Žilić | Business & Product Strategy | Žilić Consult", description: "Independent consulting by Tonći Žilić for founders and executives: business strategy, product direction, market entry, pricing and growth.", lastModified: site.lastModified };
 const homepage = homepageSource
   .replaceAll("https://www.zilic-consult.com", site.origin)
   .replace("</head>", `<script type="application/ld+json">${schemaFor(home)}</script>\n${verificationMeta}\n${analyticsHead}\n</head>`)
@@ -80,7 +80,7 @@ const primaryPages = [
 
 await writeOutput("llms.txt", `# Žilić Consult
 
-> Tonći Žilić (Tonci Zilic), Head of Robotaxi at Onde and founder of Žilić Consult. Robotaxi and autonomous vehicle (AV) strategy, robotaxi product strategy, infotainment and connected vehicle services.
+> Tonći Žilić (Tonci Zilic), Head of Robotaxi at Onde and founder of Žilić Consult. Business strategy, product direction, market entry, pricing and growth, with specialist robotaxi and autonomous mobility expertise.
 
 ## Professional profile
 Tonći Žilić is a robotaxi and autonomous vehicle (AV) product and strategy practitioner based in Zagreb, Croatia. He joined Onde as Head of Robotaxi in September 2026. From 2024 to 2025 he was Product Manager for rider experience, including infotainment, at Project 3 Mobility / Verne, the Zagreb operator that launched Europe's first commercial robotaxi service with Pony.ai and Uber in April 2026. Earlier he was Product Manager for connected vehicle services at Rimac Technology. The About page links the public career record and speaking evidence. Consulting availability and conflicts are reviewed before engagement.
