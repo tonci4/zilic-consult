@@ -284,6 +284,8 @@ export function renderPage(page) {
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/ds.css">
   <link rel="stylesheet" href="/assets/site.css">
+  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js-motion');setTimeout(function(){d.classList.remove('js-motion')},2500)}}catch(e){}})(document.documentElement)</script>
+  <script type="module" src="/assets/motion.js"></script>
   <script type="application/ld+json">${schemaFor(page)}</script>
   ${analyticsHead}
 </head>

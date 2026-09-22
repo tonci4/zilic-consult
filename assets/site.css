@@ -102,7 +102,8 @@ a:hover { color: var(--color-accent-800); }
   font-family: var(--font-heading); font-size: 13px; line-height: 1.6;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-700);
 }
-.hero__proof span { margin: 0 0.45em; color: var(--color-accent-700); }
+.hero__proof span { display: inline-block; }
+.hero__arrow { margin: 0 0.45em; color: var(--color-accent-700); }
 .actions {
   display: flex; flex-wrap: wrap; align-items: center;
   gap: 28px; margin-top: clamp(36px, 5vw, 56px);
@@ -413,4 +414,19 @@ a:hover { color: var(--color-accent-800); }
 @media (max-width: 640px) {
   .consent__actions { margin-left: 0; width: 100%; }
   .consent__btn { flex: 1; }
+}
+
+/* — motion layer (assets/motion.js, source in src/motion.js) —
+   .js-motion is set in <head> only when motion is allowed, and removed by the
+   script (or a 2.5 s safety timeout), so content is never stuck hidden. */
+.js-motion .hero > *, .js-motion .page-hero > * { opacity: 0; }
+.js-motion .hero__step, .js-motion .hero__arrow { opacity: 0; }
+.scroll-progress {
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: var(--color-accent); transform: scaleX(0); transform-origin: 0 50%;
+  pointer-events: none;
+}
+.btn.blueprint { will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
 }

@@ -4,3 +4,4 @@
 .claude/
 dist/
 SEO-AI-*.md
+node_modules/
